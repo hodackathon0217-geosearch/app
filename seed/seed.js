@@ -1,28 +1,7 @@
 'use strict';
 
 const request = require('request-promise');
-
-// Index auto created automatically
-// function createIndex() {
-//   console.log('Creating index...');
-//   const opts = {
-//     method: 'PUT',
-//     uri: 'http://elasticsearch:9200/test',
-//     json: true,
-//     body: {
-//       'mappings' : {
-//         'thetype' : {
-//           'properties' : {
-//             'message' : {
-//               'type': 'text',
-//             },
-//           },
-//         },
-//       },
-//     },
-//   };
-//   return request(opts);
-// }
+const exampleDocuments = require('./convertcsv.json')
 
 function deleteIndex() {
   console.log('Deleting index (and data)...');
@@ -31,23 +10,50 @@ function deleteIndex() {
     uri: 'http://elasticsearch:9200/test',
     json: true,
   };
-  return request(opts);
+  return request(opts)
+  	.catch(() => {});
 }
 
-function createData() {
-  console.log('Creating data...');
+function createData(row) {
+  console.log('Creating data...' , row['Crime ID']);
+  row.location = {
+  	lat : row.Latitude,
+		lon : row.Longitude
+  };
+  delete row.Latitude;
+  delete row.Longitude;
   const opts = {
     method: 'POST',
     uri: 'http://elasticsearch:9200/test/thetype',
     json: true,
+    body: row,
+  };
+  return request(opts);
+}
+
+function createMapping() {
+	console.log('Create mapping for location...');
+	const opts = {
+    method: 'PUT',
+    uri: 'http://elasticsearch:9200/test',
+    json: true,
     body: {
-      message: 'Message saved in elastic!',
-    },
+			mappings: {
+				thetype: {
+					properties: {
+						location: {
+							type: "geo_point"
+						}
+					}
+				}
+			}
+		},
   };
   return request(opts);
 }
 
 deleteIndex()
-  .then(createData)
+	.then(createMapping)
+	.then(() => Promise.all(exampleDocuments.map(createData)))
   .then(() => console.log('Seeding done!'))
   .catch(err => console.log('ERROR!!', err));

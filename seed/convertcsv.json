@@ -1,0 +1,44 @@
+[
+ {
+   "Crime ID": "3b788ca4bd813baea59b43914255e05f51ef1a0060ec92207a29249322069d2d",
+   "Month": "2016-12",
+   "Reported by": "Wiltshire Police",
+   "Falls within": "Wiltshire Police",
+   "Longitude": -2.28779,
+   "Latitude": 51.328897,
+   "Location": "On or near Iford Hill",
+   "LSOA code": "E01033078",
+   "LSOA name": "Bath and North East Somerset 010G",
+   "Crime type": "Violence and sexual offences",
+   "Last outcome category": "Under investigation",
+   "Context": ""
+ },
+ {
+   "Crime ID": "06ccc2ec57aa76b360b7dfec7f4df5d59feccaa33f6e907ff046a135358a1d59",
+   "Month": "2016-12",
+   "Reported by": "Wiltshire Police",
+   "Falls within": "Wiltshire Police",
+   "Longitude": -2.107042,
+   "Latitude": 51.632971,
+   "Location": "On or near Crudwell Lane",
+   "LSOA code": "E01022176",
+   "LSOA name": "Cotswold 011A",
+   "Crime type": "Other theft",
+   "Last outcome category": "Investigation complete; no suspect identified",
+   "Context": ""
+ },
+ {
+   "Crime ID": "0b2e60f8079340a996488bba846ed950ac446d3bbedde92180d7f290fac72bb8",
+   "Month": "2016-12",
+   "Reported by": "Wiltshire Police",
+   "Falls within": "Wiltshire Police",
+   "Longitude": -2.271297,
+   "Latitude": 51.289688,
+   "Location": "On or near Bradford Road",
+   "LSOA code": "E01029022",
+   "LSOA name": "Mendip 001A",
+   "Crime type": "Violence and sexual offences",
+   "Last outcome category": "Awaiting court outcome",
+   "Context": ""
+ }
+]
