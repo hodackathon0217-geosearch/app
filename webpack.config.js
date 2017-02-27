@@ -46,7 +46,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, '_build'),
     watchContentBase: true,
-    compress: true,
+    host: '0.0.0.0',
     port: 8080,
     overlay: {
       warnings: false,

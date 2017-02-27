@@ -1,0 +1,3 @@
+example url for api:
+
+http://localhost:8080/api/search?points[0][lat]=60&points[0][lon]=-1&points[1][lat]=40&points[1][lon]=-1&points[2][lat]=60&points[2][lon]=-3&points[3][lat]=40&points[3][lon]=-3

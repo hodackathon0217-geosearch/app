@@ -2,12 +2,13 @@
 
 const request = require('request-promise');
 const exampleDocuments = require('./convertcsv.json')
+const ELASTICSEARCH_URL = process.env.ELASTICSEARCH_URL;
 
 function deleteIndex() {
   console.log('Deleting index (and data)...');
   const opts = {
     method: 'DELETE',
-    uri: 'http://elasticsearch:9200/test',
+    uri: `${ELASTICSEARCH_URL}/test`,
     json: true,
   };
   return request(opts)
@@ -24,7 +25,7 @@ function createData(row) {
   delete row.Longitude;
   const opts = {
     method: 'POST',
-    uri: 'http://elasticsearch:9200/test/thetype',
+    uri: `${ELASTICSEARCH_URL}/test/thetype`,
     json: true,
     body: row,
   };
