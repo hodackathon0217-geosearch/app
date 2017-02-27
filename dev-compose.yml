@@ -1,0 +1,24 @@
+version: "2"
+
+services:
+  elasticsearch:
+    image: elasticsearch:5.2.1
+    volumes:
+      - "./elasticsearch/log:/data/log"
+    ports:
+      - "9200:9200"
+
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./seed:/app/seed
+      - ./client:/app/client
+      - ./common:/app/common
+      - ./server:/app/server
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch
+    command: "npm run dev"

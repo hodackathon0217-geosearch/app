@@ -12,7 +12,8 @@
     "test-server": "mocha --require server/helpers.test.js --recursive server/**/*.test.js",
     "test-common": "mocha --require server/helpers.test.js --recursive common/**/*.test.js",
     "test-client": "mocha --compilers js:babel-register --require client/helpers.test.js --require client/dom.test.js --recursive client/**/*.test.*",
-    "build": "webpack --display-error-details --progress"
+    "build": "webpack --display-error-details --progress",
+    "seed": "node seed/seed.js"
   },
   "private": true,
   "author": "Lewis Haggar",
@@ -45,6 +46,8 @@
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "redux": "^3.5.2",
+    "request": "^2.79.0",
+    "request-promise": "^4.1.1",
     "rewire": "^2.5.2",
     "sass-loader": "^6.0.2",
     "sinon": "^1.17.7",

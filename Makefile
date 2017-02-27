@@ -1,5 +1,7 @@
-SERVICE_NAME=hrc-api
+SERVICE_NAME=geosearchapp
 VERSION=$(shell git rev-parse --short HEAD)
+
+.PHONY: seed
 
 all: clean build up
 
@@ -18,3 +20,10 @@ up:
 
 down:
 	docker-compose down
+
+dev:
+	# -docker-compose down
+	docker-compose -f dev-compose.yml up
+
+seed:
+	docker-compose exec -T app npm run seed
