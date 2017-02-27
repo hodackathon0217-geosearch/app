@@ -4,7 +4,8 @@ services:
   elasticsearch:
     image: elasticsearch:5.2.1
     volumes:
-      - "./elasticsearch/log:/data/log"
+      - ./elasticsearch/logs:/usr/share/elasticsearch/logs
+      - ./elasticsearch/data:/usr/share/elasticsearch/data
     ports:
       - "9200:9200"
 
@@ -21,4 +22,4 @@ services:
       - elasticsearch
     links:
       - elasticsearch
-    command: "npm run dev"
+    command: npm run dev
