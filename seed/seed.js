@@ -2,6 +2,8 @@
 
 const request = require('request-promise');
 
+const ELASTICSEARCH_URL = process.env.ELASTICSEARCH_URL;
+
 // Index auto created automatically
 // function createIndex() {
 //   console.log('Creating index...');
@@ -28,7 +30,7 @@ function deleteIndex() {
   console.log('Deleting index (and data)...');
   const opts = {
     method: 'DELETE',
-    uri: 'http://elasticsearch:9200/test',
+    uri: `${ELASTICSEARCH_URL}/test`,
     json: true,
   };
   return request(opts);
@@ -38,7 +40,7 @@ function createData() {
   console.log('Creating data...');
   const opts = {
     method: 'POST',
-    uri: 'http://elasticsearch:9200/test/thetype',
+    uri: `${ELASTICSEARCH_URL}/test/thetype`,
     json: true,
     body: {
       message: 'Message saved in elastic!',
