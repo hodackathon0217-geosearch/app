@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  elasticsearch:
+    image: elasticsearch:5.2.1
+    volumes:
+      - "./elasticsearch/log:/data/log"
+    ports:
+      - "9200:9200"
+
+  app:
+    # build: .
+    image: geosearchapp:latest
+    ports:
+      - 3000:3000
+    depends_on:
+      - elasticsearch
+    links:
+      - elasticsearch

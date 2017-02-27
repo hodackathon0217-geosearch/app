@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+.env-local
+*.map
+*.test.js
+
+.git/
+_build/
+node_modules/
