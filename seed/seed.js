@@ -3,6 +3,9 @@
 const request = require('request-promise');
 const exampleDocuments = require('./convertcsv.json')
 const ELASTICSEARCH_URL = process.env.ELASTICSEARCH_URL;
+const AdmZip = require('adm-zip');
+
+const zip = new AdmZip("./data/crimeDataAggregated.csv.zip");
 
 function deleteIndex() {
   console.log('Deleting index (and data)...');
@@ -55,6 +58,7 @@ function createMapping() {
 
 deleteIndex()
 	.then(createMapping)
+	.then(() => zip.extractAllTo('./data/crimeData', true);)
 	.then(() => Promise.all(exampleDocuments.map(createData)))
   .then(() => console.log('Seeding done!'))
   .catch(err => console.log('ERROR!!', err));
