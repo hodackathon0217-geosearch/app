@@ -4,8 +4,6 @@ import Map from '../Map';
 import ResultsList from '../ResultsList';
 import api from '../../services/api';
 
-import pluck from 'ramda/src/pluck';
-
 const App = React.createClass({
   getInitialState: function() {
     return {};
@@ -14,9 +12,12 @@ const App = React.createClass({
     this.setState({loading: true});
     api.query(coords)
       .then(results => {
+        results.forEach(res => {
+          res.lat = res.location.lat;
+          res.lng = res.location.lng;
+        });
         this.setState({
           results,
-          markers: pluck('location', results),
           loading: false});
       })
       .catch(err => {
@@ -32,7 +33,7 @@ const App = React.createClass({
     }
     return (
       <div>
-        <Map onPolygonComplete={this.query} markers={this.state.markers}></Map>
+        <Map onPolygonComplete={this.query} markers={this.state.results}></Map>
         {resultsContent}
       </div>
     );

@@ -3,7 +3,13 @@ import React from 'react';
 import GoogleDrawingManager from 'react-google-maps/lib/drawing/DrawingManager';
 
 const DrawingManager = React.createClass({
+  getInitialState: function() {
+    return {
+      drawingMode: google.maps.drawing.OverlayType.POLYGON,
+    };
+  },
   onPolygonComplete: function(polygon) {
+    this.setState({drawingMode: undefined});
     const coordinates = polygon.getPath()
       .getArray()
       .map(point => {
@@ -17,17 +23,16 @@ const DrawingManager = React.createClass({
     }
   },
   render: function() {
-    const polygonDrawingMode = google.maps.drawing.OverlayType.POLYGON;
     return (
       <GoogleDrawingManager
-        defaultDrawingMode={polygonDrawingMode}
+        drawingMode={this.state.drawingMode}
         onPolygonComplete={this.onPolygonComplete}
         defaultOptions={{
           drawingControl: true,
           drawingControlOptions: {
             position: google.maps.ControlPosition.TOP_CENTER,
             drawingModes: [
-              polygonDrawingMode,
+              google.maps.drawing.OverlayType.POLYGON,
             ],
           },
         }}

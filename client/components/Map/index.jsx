@@ -2,7 +2,7 @@ import React from 'react';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import withScriptjs from 'react-google-maps/lib/async/withScriptjs';
 
-import Marker from 'react-google-maps/lib/Marker';
+import MapMarker from '../MapMarker';
 import DrawingManager from '../DrawingManager';
 
 const GoogleMapWrapper = withScriptjs(withGoogleMap(props => (
@@ -14,7 +14,13 @@ const GoogleMapWrapper = withScriptjs(withGoogleMap(props => (
       onPolygonComplete={props.onPolygonComplete}
     ></DrawingManager>
     {props.markers.map((marker, i) => (
-      <Marker key={i} position={marker}></Marker>
+      <MapMarker
+        key={i}
+        lat={marker.lat}
+        lng={marker.lng}
+        infoContent={(<div><p>{marker['Falls within']}</p><p>{marker['Crime type']}</p></div>)}
+      >
+      </MapMarker>
     ))}
   </GoogleMap>
 )));
