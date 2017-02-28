@@ -11,7 +11,7 @@ const ResultsList = props => {
     <ul>
       {
         items.map(item => (
-          <li key={item.CrimeID}>{JSON.stringify(item, 2)}</li>
+          <li key={item['Crime ID']}>{JSON.stringify(item, 2)}</li>
         ))
       }
     </ul>

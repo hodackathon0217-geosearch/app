@@ -12,8 +12,8 @@ const formatLocation = location => {
 
 function search(req, res) {
   const points = req.query.points.map(i => ({
-    lat: parseInt(i.lat),
-    lon: parseInt(i.lng),
+    lat: i.lat,
+    lon: i.lng,
   }));
   const opts = {
     method: 'GET',

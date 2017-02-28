@@ -13,8 +13,8 @@ const GoogleMapWrapper = withScriptjs(withGoogleMap(props => (
     <DrawingManager
       onPolygonComplete={props.onPolygonComplete}
     ></DrawingManager>
-    {props.markers.map(marker => (
-      <Marker position={marker}></Marker>
+    {props.markers.map((marker, i) => (
+      <Marker key={i} position={marker}></Marker>
     ))}
   </GoogleMap>
 )));
