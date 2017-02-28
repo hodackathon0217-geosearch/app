@@ -1,11 +1,19 @@
 'use strict';
 
 const request = require('request-promise');
+const R = require('ramda');
+
+const formatLocation = location => {
+  return {
+    lat: location.lat,
+    lng: location.lon,
+  };
+};
 
 function search(req, res) {
   const points = req.query.points.map(i => ({
     lat: parseInt(i.lat),
-    lon: parseInt(i.lon),
+    lon: parseInt(i.lng),
   }));
   const opts = {
     method: 'GET',
@@ -29,9 +37,17 @@ function search(req, res) {
     },
   };
   request(opts)
-    .then(r => {
-      res.json(r.hits.hits);
-    })
+    .then(R.compose(
+      x => res.json(x),
+      R.map(
+        R.over(
+          R.lensProp('location'),
+          formatLocation
+        )
+      ),
+      R.map(R.prop('_source')),
+      R.pathOr([], ['hits','hits'])
+    ))
     .catch(e => {
       res.send(e);
     });
