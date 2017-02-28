@@ -13,8 +13,8 @@ const App = React.createClass({
     api.query(coords)
       .then(results => {
         results.forEach(res => {
-          res.lat = res.location.lat;
-          res.lng = res.location.lng;
+          res.lat = parseFloat(res.location.lat);
+          res.lng = parseFloat(res.location.lng);
         });
         this.setState({
           results,
