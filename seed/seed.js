@@ -1,7 +1,7 @@
 'use strict';
 
 const request = require('request-promise');
-const exampleDocuments = require('./convertcsv.json')
+const exampleDocuments = require('./convertcsv.json');
 const ELASTICSEARCH_URL = process.env.ELASTICSEARCH_URL;
 const AdmZip = require('adm-zip');
 
@@ -15,14 +15,14 @@ function deleteIndex() {
     json: true,
   };
   return request(opts)
-  	.catch(() => {});
+    .catch(() => {});
 }
 
 function createData(row) {
   console.log('Creating data...' , row['Crime ID']);
   row.location = {
-  	lat : row.Latitude,
-		lon : row.Longitude
+    lat : row.Latitude,
+    lon : row.Longitude,
   };
   delete row.Latitude;
   delete row.Longitude;
@@ -36,22 +36,22 @@ function createData(row) {
 }
 
 function createMapping() {
-	console.log('Create mapping for location...');
-	const opts = {
+  console.log('Create mapping for location...');
+  const opts = {
     method: 'PUT',
     uri: 'http://elasticsearch:9200/test',
     json: true,
     body: {
-			mappings: {
-				thetype: {
-					properties: {
-						location: {
-							type: "geo_point"
-						}
-					}
-				}
-			}
-		},
+      mappings: {
+        thetype: {
+          properties: {
+            location: {
+              type: 'geo_point',
+            },
+          },
+        },
+      },
+    },
   };
   return request(opts);
 }

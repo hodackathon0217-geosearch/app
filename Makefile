@@ -22,8 +22,9 @@ down:
 	docker-compose down
 
 dev:
+	-docker-compose stop app
 	docker-compose up -d elasticsearch
 	ELASTICSEARCH_URL=http://localhost:9200 npm run dev
 
-seed:
-	docker-compose exec -T app npm run seed
+seed: build
+	docker-compose run -T app npm run seed
