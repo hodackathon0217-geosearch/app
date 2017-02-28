@@ -7,6 +7,26 @@ const extract = require('extract-zip')
 const fs = require('fs');
 const parse = require('csv-parse');
 
+function createRecord(row) {
+	let record = {
+		Month: row[0],
+		"Reported by": row[3],
+		"Falls within": row[4],
+		"Location": row[5],
+		"LSOA code": row[6],
+		"LSOA name" : row[7],
+		"Crime type": row[8],
+		"Last outcome category":  row[9]
+	}
+	const lat = row[2] === 'NA' ? 0 : row[2]
+	const lon = row[1] === 'NA' ? 0 : row[1]
+	record.location = {
+		lat : lat,
+		lon : lon,
+	};
+	return record;
+}
+
 function readCSV() {
 	return new Promise((resolve, reject) => {
 		extract('/app/seed/data/crimeDataAggregated.csv.zip', {dir: '/app/seed/data/'}, function (err) {
@@ -37,22 +57,8 @@ function deleteIndex() {
 
 function createData(row) {
   console.log('Creating data...' , row[0]);
-  const record = {
-  	Month: row[0],
-  	"Reported by": row[3],
-  	"Falls within": row[4],
-  	"Location": row[5],
-  	"LSOA code": row[6],
-  	"LSOA name" : row[7],
-  	"Crime type": row[8],
-  	"Last outcome category":  row[9]
-  }
-  const lat = row[2] === 'NA' ? 0 : parseFloat(row[2])
-  const lon = row[1] === 'NA' ? 0 : parseFloat(row[1])
-  record.location = {
-    lat : lat,
-    lon : lon,
-  };
+  const record = createRecord(row);
+  console.log('Creating record...' , record);
   const opts = {
     method: 'POST',
     uri: `${ELASTICSEARCH_URL}/test/thetype`,
