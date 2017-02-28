@@ -20,6 +20,7 @@ function search(req, res) {
     uri: 'http://localhost:9200/test/thetype/_search',
     json: true,
     body: {
+    	"from" : 0, "size" : 1000,
       'query': {
         'bool' : {
           'must' : {
