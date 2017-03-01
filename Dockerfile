@@ -1,13 +1,14 @@
 FROM node:7.6.0
 
+RUN npm i -g yarn
+
 WORKDIR /app
-
-COPY package.json .
-
-RUN npm i
 
 COPY . .
 
-RUN npm run build
+RUN yarn install \
+  && yarn run build \
+  && yarn install --production --ignore-scripts --prefer-offline \
+  && yarn cache clean
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
