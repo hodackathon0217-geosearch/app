@@ -1,0 +1,110 @@
+[
+  {
+    "value": "NA",
+    "key": 1
+  },
+  {
+    "value": "",
+    "key": 2
+  },
+  {
+    "value": "Under investigation",
+    "key": 3
+  },
+  {
+    "value": "Court result unavailable",
+    "key": 4
+  },
+  {
+    "value": "Investigation complete; no suspect identified",
+    "key": 5
+  },
+  {
+    "value": "Unable to prosecute suspect",
+    "key": 6
+  },
+  {
+    "value": "Offender given a caution",
+    "key": 7
+  },
+  {
+    "value": "Offender given community sentence",
+    "key": 8
+  },
+  {
+    "value": "Awaiting court outcome",
+    "key": 9
+  },
+  {
+    "value": "Defendant found not guilty",
+    "key": 10
+  },
+  {
+    "value": "Local resolution",
+    "key": 11
+  },
+  {
+    "value": "Offender given suspended prison sentence",
+    "key": 12
+  },
+  {
+    "value": "Offender sent to prison",
+    "key": 13
+  },
+  {
+    "value": "Offender fined",
+    "key": 14
+  },
+  {
+    "value": "Offender given conditional discharge",
+    "key": 15
+  },
+  {
+    "value": "Further investigation is not in the public interest",
+    "key": 16
+  },
+  {
+    "value": "Formal action is not in the public interest",
+    "key": 17
+  },
+  {
+    "value": "Offender given penalty notice",
+    "key": 18
+  },
+  {
+    "value": "Suspect charged as part of another case",
+    "key": 19
+  },
+  {
+    "value": "Action to be taken by another organisation",
+    "key": 20
+  },
+  {
+    "value": "Court case unable to proceed",
+    "key": 21
+  },
+  {
+    "value": "Offender otherwise dealt with",
+    "key": 22
+  },
+  {
+    "value": "Offender ordered to pay compensation",
+    "key": 23
+  },
+  {
+    "value": "Defendant sent to Crown Court",
+    "key": 24
+  },
+  {
+    "value": "Offender given absolute discharge",
+    "key": 25
+  },
+  {
+    "value": "Offender given a drugs possession warning",
+    "key": 26
+  },
+  {
+    "value": "Offender deprived of property",
+    "key": 27
+  }
+]

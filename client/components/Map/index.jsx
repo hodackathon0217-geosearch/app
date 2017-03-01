@@ -18,7 +18,13 @@ const GoogleMapWrapper = withScriptjs(withGoogleMap(props => (
         key={i}
         lat={marker.lat}
         lng={marker.lng}
-        infoContent={(<div><p>{marker['Falls within']}</p><p>{marker['Crime type']}</p></div>)}
+        infoContent={(
+          <div>
+            <p>{marker['Month']} {marker['Falls within']}</p>
+            <p>{marker['Crime type']}</p>
+            <p>{marker['Last outcome category']}</p>
+          </div>
+        )}
       >
       </MapMarker>
     ))}
@@ -29,8 +35,8 @@ const Map = props => (
   <GoogleMapWrapper
     googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=drawing"
     loadingElement={<h1>Loading</h1>}
-    containerElement={<div style={{ height:600, width:800 }} />}
-    mapElement={<div style={{ height:600, width:800 }} />}
+    containerElement={<div style={{height: 600, width:'100%'}} />}
+    mapElement={<div style={{height: 600, width:'100%'}} />}
     onPolygonComplete={props.onPolygonComplete}
     markers={props.markers || []}
   ></GoogleMapWrapper>

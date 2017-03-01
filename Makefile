@@ -3,7 +3,7 @@ VERSION=$(shell git rev-parse --short HEAD)
 
 .PHONY: seed
 
-all: clean build up
+all: clean build up seed
 
 clean:
 	rm -rf ./elasticsearch
@@ -16,6 +16,8 @@ build:
 up:
 	-docker-compose down
 	docker-compose up -d
+
+logs:
 	docker-compose logs -ft
 
 down:

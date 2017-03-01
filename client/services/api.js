@@ -1,5 +1,7 @@
 const request = require('superagent');
 
+const dataTransformer = require('./data-transformer');
+
 function query(points) {
   return new Promise((resolve, reject) => {
     const query = {
@@ -23,7 +25,7 @@ function query(points) {
           }
           reject(new Error(reason));
         } else {
-          resolve(res.body);
+          resolve(res.body.map(dataTransformer.transform));
         }
       });
   });

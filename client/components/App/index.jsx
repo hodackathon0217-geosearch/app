@@ -1,8 +1,19 @@
 import React from 'react';
+// material-ui setup
+import {deepOrange500} from 'material-ui/styles/colors';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
 import Map from '../Map';
 import ResultsList from '../ResultsList';
 import api from '../../services/api';
+
+const muiTheme = getMuiTheme({
+  palette: {
+    accent1Color: deepOrange500,
+  },
+});
 
 const App = React.createClass({
   getInitialState: function() {
@@ -12,10 +23,6 @@ const App = React.createClass({
     this.setState({loading: true});
     api.query(coords)
       .then(results => {
-        results.forEach(res => {
-          res.lat = parseFloat(res.location.lat);
-          res.lng = parseFloat(res.location.lng);
-        });
         this.setState({
           results,
           loading: false});
@@ -32,10 +39,13 @@ const App = React.createClass({
       resultsContent = (<ResultsList items={this.state.results}></ResultsList>);
     }
     return (
-      <div>
-        <Map onPolygonComplete={this.query} markers={this.state.results}></Map>
-        {resultsContent}
-      </div>
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <AppBar title="Geo Search" />
+          <Map onPolygonComplete={this.query} markers={this.state.results}></Map>
+          {resultsContent}
+        </div>
+      </MuiThemeProvider>
     );
   },
 });

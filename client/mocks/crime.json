@@ -1,0 +1,58 @@
+[
+  {
+    "value": "Burglary",
+    "key": 1
+  },
+  {
+    "value": "Criminal damage and arson",
+    "key": 2
+  },
+  {
+    "value": "Drugs",
+    "key": 3
+  },
+  {
+    "value": "Public order",
+    "key": 4
+  },
+  {
+    "value": "Shoplifting",
+    "key": 5
+  },
+  {
+    "value": "Vehicle crime",
+    "key": 6
+  },
+  {
+    "value": "Violence and sexual offences",
+    "key": 7
+  },
+  {
+    "value": "Other crime",
+    "key": 8
+  },
+  {
+    "value": "Anti-social behaviour",
+    "key": 9
+  },
+  {
+    "value": "Other theft",
+    "key": 10
+  },
+  {
+    "value": "Possession of weapons",
+    "key": 11
+  },
+  {
+    "value": "Robbery",
+    "key": 12
+  },
+  {
+    "value": "Theft from the person",
+    "key": 13
+  },
+  {
+    "value": "Bicycle theft",
+    "key": 14
+  }
+]
